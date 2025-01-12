@@ -1,0 +1,72 @@
+<!-- feedback_display.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Display</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Feedback Submitted</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>M. Init.</th>
+                <th>Last Name</th>
+                <th>Matriculation</th>
+                <th>Semester</th>
+                <th>Program</th>
+                <th>Started Date</th>
+                <th>Country</th>
+                <th>Email</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="displayName"></td>
+                <td id="displayMiddleInitial"></td>
+                <td id="displayLastName"></td>
+                <td id="displayMatriculation"></td>
+                <td id="displaySemester"></td>
+                <td id="displayProgram"></td>
+                <td id="displayStartedDate"></td>
+                <td id="displayCountry"></td>
+                <td id="displayEmail"></td>
+                <td id="displayFeedback"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('displayName').textContent = urlParams.get('fname');
+        document.getElementById('displayMiddleInitial').textContent = urlParams.get('mname');
+        document.getElementById('displayLastName').textContent = urlParams.get('lname');
+        document.getElementById('displayCountry').textContent = urlParams.get('home_country');
+        document.getElementById('displayEmail').textContent = urlParams.get('email');
+        document.getElementById('displayMatriculation').textContent = urlParams.get('matriculation');
+        document.getElementById('displaySemester').textContent = urlParams.get('semester'); 
+        document.getElementById('displayProgram').textContent = urlParams.get('program');
+        document.getElementById('displayStartedDate').textContent = urlParams.get('started_date');
+        document.getElementById('displayFeedback').textContent = urlParams.get('feedback');
+    </script>
+
+    <br><br>
+    <button onclick="window.location.href = 'index.html';">Back to Form</button>
+</body>
+</html>

@@ -473,17 +473,17 @@
 
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-                if (!emailPattern.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-
                 if(fname && email && feedback && home_country && matriculation && semester && program && started_date) {
-                    const url = `feedback_result.html?fname=${encodeURIComponent(fname)}&email=${encodeURIComponent(email)}&feedback=${encodeURIComponent(feedback)
-                    }&home_country=${encodeURIComponent(home_country)}&matriculation=${encodeURIComponent(matriculation)}&semester=${encodeURIComponent(semester)}&program=${encodeURIComponent(program)}&started_date=${encodeURIComponent(started_date)}
-                        &mname=${encodeURIComponent(mname)}&lname=${encodeURIComponent(lname)}`;
-                    window.location.href = url;
+                    if (!emailPattern.test(email)) {
+                        alert('Please enter a valid email address.');
+                        return;
+                    }
+                    else {
+                            const url = `feedback_result.html?fname=${encodeURIComponent(fname)}&email=${encodeURIComponent(email)}&feedback=${encodeURIComponent(feedback)
+                        }&home_country=${encodeURIComponent(home_country)}&matriculation=${encodeURIComponent(matriculation)}&semester=${encodeURIComponent(semester)}&program=${encodeURIComponent(program)}&started_date=${encodeURIComponent(started_date)}
+                            &mname=${encodeURIComponent(mname)}&lname=${encodeURIComponent(lname)}`;
+                        window.location.href = url;
+                    }
                 } else {
                     alert('Please fill in all the details of the form!');
                     

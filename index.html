@@ -27,16 +27,16 @@
             <form>
                 <h2 style="text-align: center; color: rgb(90, 54, 1)">Personal Info</h2>
                 <label for="fname">Name:</label><br>
-                <input type="text" id="fname" name="fname" pattern="[A-Za-z]+" 
+                <input type="text" id="fname" name="fname" pattern="[A-Za-z]+" placeholder="First Name..." 
                     title="Only alphabetical characters allowed" autofocus required onkeypress="preventNumbers(event)"><br><br>
 
                     
                 <label for="mname">Middle Initial:</label><br>
-                <input type="text" id="mname" name="mname" pattern="[A-Za-z]+" 
+                <input type="text" id="mname" name="mname" pattern="[A-Za-z]+" placeholder="Middle Initial..." 
                 title="Only alphabetical characters allowed" required onkeypress="preventNumbers(event)"><br><br>
 
                 <label for="lname">Last Name:</label><br>
-                <input type="text" id="lname" name="lname" pattern="[A-Za-z]+" 
+                <input type="text" id="lname" name="lname" pattern="[A-Za-z]+" placeholder="Last Name..." 
                 title="Only alphabetical characters allowed" required onkeypress="preventNumbers(event)"><br><br> 
 
                 <label for="home_country">I am from:</label><br>
@@ -283,10 +283,10 @@
                 </select><br><br>
 
                 <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br><br>
+                <input type="email" id="email" name="email" placeholder="Your Email..." required><br><br>
             
                 <label for="matriculation">Matriculation:</label><br>
-                <input type="text" id="matriculation" name="matriculation" pattern="[0-9]+" 
+                <input type="text" id="matriculation" name="matriculation" pattern="[0-9]+" placeholder="Matriculation Number(Only Digits)..."
                 title="Only digits (0-9) are allowed! Number should be of exactly 7 digits!"  onkeypress="allowOnlyNumbers(event)" required><br><br>
 
                 <label for="semester">Semester:</label><br>
@@ -331,16 +331,16 @@
                 <label for="Others">Others</label><br><br>
 
                 <h3>When I finish my studies, I will:</h3>
-                <input type="radio" id="return" name="return" value="return">
+                <input type="radio" id="return" name="finish_studies" value="return">
                 <label for="return">Return to my country</label>
-                <input type="radio" id="job" name="job" value="job">
+                <input type="radio" id="job" name="finish_studies" value="job">
                 <label for="job">Look for a job in Europe</label>
-                <input type="radio" id="decide" name="decide" value="decide">
+                <input type="radio" id="decide" name="finish_studies" value="decide">
                 <label for="decide">Do the practical training and then decide.</label><br><br>
                 
                 <h3>Feedback:</h3>
                 <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea><br><br>                
-                <button type="submit" class="fill_button" >Submit</button>
+                <button type="submit" class="fill_button" onclick="submitForm()" >Submit</button>
 
             </form>
         </div>
@@ -456,6 +456,40 @@
             <p> I have done this project myself and accept the consequences if found othewise.</p>
             <h3>You can reach me out at : <b>100001909@stud.srh-university.de</b></h3>
         </div>
+
+        <script>
+            function submitForm() {
+                event.preventDefault();
+                const fname = document.getElementById('fname').value;
+                const mname = document.getElementById('mname').value;
+                const lname = document.getElementById('lname').value;
+                const email = document.getElementById('email').value;
+                const feedback = document.getElementById('feedback').value;
+                const home_country = document.getElementById('home_country').value;
+                const matriculation = document.getElementById('matriculation').value;
+                const semester = document.getElementById('semester').value;
+                const program = document.getElementById('program').value;
+                const started_date = document.getElementById('started_date').value;
+
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+
+                if(fname && email && feedback && home_country && matriculation && semester && program && started_date) {
+                    const url = `feedback_result.html?fname=${encodeURIComponent(fname)}&email=${encodeURIComponent(email)}&feedback=${encodeURIComponent(feedback)
+                    }&home_country=${encodeURIComponent(home_country)}&matriculation=${encodeURIComponent(matriculation)}&semester=${encodeURIComponent(semester)}&program=${encodeURIComponent(program)}&started_date=${encodeURIComponent(started_date)}
+                        &mname=${encodeURIComponent(mname)}&lname=${encodeURIComponent(lname)}`;
+                    window.location.href = url;
+                } else {
+                    alert('Please fill in all the details of the form!');
+                    
+                }
+            }
+        </script>
 
     </body>
 </html>

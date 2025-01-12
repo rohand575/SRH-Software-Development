@@ -25,14 +25,14 @@
         <br>      
         <div class="form_container">
             <form>
-                <h2 style="text-align: center; color: rgb(90, 54, 1)">Personal Info</h2>
+                <h2 id ="Personal_info" style="text-align: center; color: rgb(90, 54, 1)">Personal Info</h2>
                 <label for="fname">Name:</label><br>
                 <input type="text" id="fname" name="fname" pattern="[A-Za-z]+" placeholder="First Name..." 
                     title="Only alphabetical characters allowed" autofocus required onkeypress="preventNumbers(event)"><br><br>
 
                     
-                <label for="mname">Middle Initial:</label><br>
-                <input type="text" id="mname" name="mname" pattern="[A-Za-z]+" placeholder="Middle Initial..." 
+                <label for="mname">Middle Name:</label><br>
+                <input type="text" id="mname" name="mname" pattern="[A-Za-z]+" placeholder="Middle Name..." 
                 title="Only alphabetical characters allowed" required onkeypress="preventNumbers(event)"><br><br>
 
                 <label for="lname">Last Name:</label><br>
@@ -332,9 +332,9 @@
 
                 <h3>When I finish my studies, I will:</h3>
                 <input type="radio" id="return" name="finish_studies" value="return">
-                <label for="return">Return to my country</label>
+                <label for="return">Return to my country</label><br>
                 <input type="radio" id="job" name="finish_studies" value="job">
-                <label for="job">Look for a job in Europe</label>
+                <label for="job">Look for a job in Europe</label><br>
                 <input type="radio" id="decide" name="finish_studies" value="decide">
                 <label for="decide">Do the practical training and then decide.</label><br><br>
                 
@@ -473,7 +473,7 @@
 
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-                if(fname && email && feedback && home_country && matriculation && semester && program && started_date) {
+                if(fname && email && feedback && home_country && matriculation && semester && program && started_date && mname && lname) {
                     if (!emailPattern.test(email)) {
                         alert('Please enter a valid email address.');
                         return;
